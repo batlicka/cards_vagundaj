@@ -32,6 +32,7 @@ function App() {
     setName('');
     setDescriprion('');
   };
+  
   const handleShowUserEditClicked = id=>{
     setEditedID(id);//pouze 1 konkretni karta se da do edit state
     const editedUser = users.find(user=>user.id===id); 
@@ -44,9 +45,7 @@ function App() {
     setUsers(filteredUsers);
   };
 
-  const handelEditClicked = id=>{
-    //
-  }
+ 
 //handler
   const handleEditUserCardClicked = id =>{
     const editedUser = users.map(user=>{
@@ -80,8 +79,8 @@ const renderUserCards =()=>users.map(({id, name, description,editingState})=>{
     onEditSaveClicked={()=>handleEditUserCardClicked(id)}
     
     name={name} 
-    onCloseClicked={()=>handleCloseClicked(id)}    
-    onEditeClicked={()=>handelEditClicked(false)}/>
+    onCloseClicked={()=>handleCloseClicked(id)}  
+    />
   )
 })
 
