@@ -7,8 +7,7 @@ import './Card.css';
 const Card = ({
     id,
     editedID,    
-    description,
-    onCloseClicked,
+    description,    
     editedDescription,
     setEditedName,
     editedName,
@@ -16,6 +15,7 @@ const Card = ({
     name,
     onEditClicked,
     onEditSaveClicked,
+    onCloseClicked,
 }) => {
     const renderNormalView = () => {
         return (
@@ -23,6 +23,7 @@ const Card = ({
                 <div className="card">
                     <div class="card-heading">
                         <h2>{name}</h2>
+                        <h2>{id}</h2>
                         <span onClick={onCloseClicked} className='close'>
                             close
                     </span>

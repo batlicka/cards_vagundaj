@@ -48,17 +48,17 @@ function App() {
  
 //handler
   const handleEditUserCardClicked = id =>{
-    const editedUser = users.map(user=>{
+    const editedUsers = users.map(user=>{
       if(user.id === id){
-        return{
-          ...user,
+        return{          
+          ...user, //Proč je zde?
           name: editedName,
           description: editedDescription,
-        }
+        }      
       }
       return user;
     })
-    setUsers(editedUser);
+    setUsers(editedUsers);
     setEditedID(0);
   }
 
@@ -66,19 +66,16 @@ function App() {
 const renderUserCards =()=>users.map(({id, name, description,editingState})=>{
   return(
     <Card 
-    key={id} 
     id={id}
-    editedName={editedName}
     editedID = {editedID}
+    description={description}
     editedDescription={editedDescription}
     setEditedName={setEditedName}
+    editedName={editedName}
     setEditedDescription={setEditedDescription}
-    description={description}
-    editingState={editingState}
+    name={name} 
     onEditClicked={()=>handleShowUserEditClicked(id)}
     onEditSaveClicked={()=>handleEditUserCardClicked(id)}
-    
-    name={name} 
     onCloseClicked={()=>handleCloseClicked(id)}  
     />
   )
