@@ -1,7 +1,7 @@
 ////this object obtain every component
 import React from 'react'
 import './Card.css';
-//
+//test  vojta
 
 const Card = ({
     id,
