@@ -51,11 +51,14 @@ function App() {
     //create copy of users array, with changed user according if
     const editedUsers = users.map(user=>{
       if(user.id === id){
+        //RESENI Paťa a Matuš
         // return{ 
-        //   //...user, //Proč je zde?
+        //   ...user,
         //   name: editedName,
         //   description: editedDescription,
-        // }      
+        // } 
+        
+        //RESENI Vojtuv pokus
         user.name=editedName;
         user.description=editedDescription;
      } 
