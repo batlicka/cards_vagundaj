@@ -17,7 +17,7 @@ function App() {
   const[description, setDescriprion] = useState('');
   const[editedName, setEditedName] = useState('');
   const[editedDescription, setEditedDescription] = useState('');
-  const[editedID, setEditedID] = useState('');//pro  odchytavani ID
+  const[editedID, setEditedID] = useState(0);//jakoby globalni promenna pro ulozeni ID editovane karty
   
 
   const inputsAreEmpty = name ==='' || description ==='';
@@ -33,7 +33,7 @@ function App() {
     setDescriprion('');
   };
   
-  const handleShowUserEditClicked = id=>{
+  const handleShowUserEditClicked = (id)=>{
     setEditedID(id);//pouze 1 konkretni karta se da do edit state
     const editedUser = users.find(user=>user.id===id); 
     setEditedName(editedUser.name);
@@ -48,20 +48,26 @@ function App() {
  
 //handler
   const handleEditUserCardClicked = id =>{
+    //create copy of users array, with changed user according if
     const editedUsers = users.map(user=>{
       if(user.id === id){
-        return{          
-          ...user, //Proč je zde?
-          name: editedName,
-          description: editedDescription,
-        }      
-      }
+        // return{ 
+        //   //...user, //Proč je zde?
+        //   name: editedName,
+        //   description: editedDescription,
+        // }      
+        user.name=editedName;
+        user.description=editedDescription;
+     } 
       return user;
     })
     setUsers(editedUsers);
     setEditedID(0);
   }
 
+  const handelCancelUserCardClicked = () => {
+    setEditedID(0);
+  }
 //{user.map()} mohlo by být i samostatně
 const renderUserCards =()=>users.map(({id, name, description,editingState})=>{
   return(
@@ -76,6 +82,7 @@ const renderUserCards =()=>users.map(({id, name, description,editingState})=>{
     name={name} 
     onEditClicked={()=>handleShowUserEditClicked(id)}
     onEditSaveClicked={()=>handleEditUserCardClicked(id)}
+    onEditCancelClicked ={()=>handelCancelUserCardClicked()}
     onCloseClicked={()=>handleCloseClicked(id)}  
     />
   )

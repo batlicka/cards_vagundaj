@@ -15,6 +15,7 @@ const Card = ({
     name,
     onEditClicked,
     onEditSaveClicked,
+    onEditCancelClicked,
     onCloseClicked,
 }) => {
     const renderNormalView = () => {
@@ -49,7 +50,7 @@ const Card = ({
                     placeholder='Descripton'
                 />
                 <button onClick={onEditSaveClicked}>save</button>
-                <button>cancel</button>
+                <button onClick={onEditCancelClicked}>cancel</button>
             </div>
         );
     };
