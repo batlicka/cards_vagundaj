@@ -26,7 +26,7 @@ function App() {
     const newUser={
       id: users.length +10, //unikatni id pomoci delky
       name: name,
-      description: description,
+      description: description,      
     };
     setUsers([newUser, ...users]);//...=spread sintax, na konec přidat všechny ostatní users
     setName('');
@@ -52,15 +52,15 @@ function App() {
     const editedUsers = users.map(user=>{
       if(user.id === id){
         //RESENI Paťa a Matuš
-        // return{ 
-        //   ...user,
-        //   name: editedName,
-        //   description: editedDescription,
-        // } 
+        return{ 
+          ...user,         
+          name: editedName,
+          description: editedDescription,
+        } 
         
         //RESENI Vojtuv pokus
-        user.name=editedName;
-        user.description=editedDescription;
+        // user.name=editedName;
+        // user.description=editedDescription;
      } 
       return user;
     })
@@ -91,9 +91,16 @@ const renderUserCards =()=>users.map(({id, name, description,editingState})=>{
   )
 })
 
+const arr = [1, 2, 3];
+const arr2 = [arr]; // like arr.slice()
+
+arr.push(4);
+console.log(arr);
+
   return (
     <Layout>
       <h1 style={headingStyle}>Cards</h1>
+      
       <Form>
       {
         /* onChange={event=>setName(event.target.value) ......hook naslouchání na změnu....nastavuje value */}
